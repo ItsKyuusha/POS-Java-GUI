@@ -94,7 +94,7 @@ public class FormMasterUser extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         user_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -412,7 +412,7 @@ public class FormMasterUser extends javax.swing.JFrame {
     }//GEN-LAST:event_batalActionPerformed
 
     private void keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarActionPerformed
-        System.exit(0);
+        dispose();
     }//GEN-LAST:event_keluarActionPerformed
 
     // Method untuk membuka koneksi database
