@@ -12,25 +12,26 @@ import java.sql.Connection;  // Import untuk koneksi MySQL
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
+
 /**
  *
  * @author Kyuusha
  */
-public class FormMasterKonsumen extends javax.swing.JFrame {
+public class FormMasterSupplier extends javax.swing.JFrame {
 // Koneksi dan objek terkait
     Connection Con; 
-    ResultSet RsKons; 
+    ResultSet RsSupp; 
     Statement stm; 
     
     Boolean ada = false; 
     Boolean edit = false; 
     
     private Object[][] dataTable = null; 
-    private String[] header = {"Kode", "Nama Konsumen", "Alamat", "Kota", "Kode Pos", "Phone", "Email"};
+    private String[] header = {"Kode", "Nama Supplier", "Alamat", "Kota", "Kode Pos", "Phone", "Email"};
     /**
-     * Creates new form FormMasterKonsumen
+     * Creates new form FormMasterSupplier
      */
-    public FormMasterKonsumen() {
+    public FormMasterSupplier() {
         initComponents();
         open_db();  // Membuka koneksi database
         baca_data();  // Membaca data dari database
@@ -38,13 +39,13 @@ public class FormMasterKonsumen extends javax.swing.JFrame {
         setTombol(true);  // Mengatur tombol-tombol
         
         // Menambahkan MouseListener ke tabel
-        tblKons.addMouseListener(new MouseAdapter() {
+        tblSupp.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                int selectedRow = tblKons.getSelectedRow();
+                int selectedRow = tblSupp.getSelectedRow();
                 if (selectedRow >= 0) {
-                    String kode = tblKons.getValueAt(selectedRow, 0).toString();
-                    kd_kons.setText(kode);
+                    String kode = tblSupp.getValueAt(selectedRow, 0).toString();
+                    kd_supp.setText(kode);
                 }
             }
         });
@@ -59,6 +60,19 @@ public class FormMasterKonsumen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
+        tambah = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        simpan = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        koreksi = new javax.swing.JButton();
+        kd_supp = new javax.swing.JTextField();
+        hapus = new javax.swing.JButton();
+        nm_supp = new javax.swing.JTextField();
+        kota_supp = new javax.swing.JTextField();
+        alm_supp = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblSupp = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         phone = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -67,24 +81,76 @@ public class FormMasterKonsumen extends javax.swing.JFrame {
         email = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        kd_kons = new javax.swing.JTextField();
-        nm_kons = new javax.swing.JTextField();
-        kota_kons = new javax.swing.JTextField();
-        alm_kons = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblKons = new javax.swing.JTable();
         batal = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         keluar = new javax.swing.JButton();
-        tambah = new javax.swing.JButton();
-        simpan = new javax.swing.JButton();
-        koreksi = new javax.swing.JButton();
-        hapus = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel3.setText("Nama Supplier");
+
+        tambah.setText("Tambah");
+        tambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tambahActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Alamat");
+
+        simpan.setText("Simpan");
+        simpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                simpanActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Kota");
+
+        koreksi.setText("Koreksi");
+        koreksi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                koreksiActionPerformed(evt);
+            }
+        });
+
+        kd_supp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kd_suppActionPerformed(evt);
+            }
+        });
+
+        hapus.setText("Hapus");
+        hapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hapusActionPerformed(evt);
+            }
+        });
+
+        nm_supp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nm_suppActionPerformed(evt);
+            }
+        });
+
+        alm_supp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alm_suppActionPerformed(evt);
+            }
+        });
+
+        tblSupp.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Kode", "Nama Supplier", "Alamat", "Kota", "Kode Pos", "Phone", "Email"
+            }
+        ));
+        jScrollPane1.setViewportView(tblSupp);
 
         jLabel6.setText("Telepon");
 
@@ -105,46 +171,7 @@ public class FormMasterKonsumen extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Data Konsumen");
-
-        jLabel2.setText("Kode Konsumen");
-
-        jLabel3.setText("Nama Konsumen");
-
-        jLabel4.setText("Alamat");
-
-        jLabel5.setText("Kota");
-
-        kd_kons.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kd_konsActionPerformed(evt);
-            }
-        });
-
-        nm_kons.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nm_konsActionPerformed(evt);
-            }
-        });
-
-        alm_kons.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                alm_konsActionPerformed(evt);
-            }
-        });
-
-        tblKons.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Kode", "Nama Konsumen", "Alamat", "Kota", "Kode Pos", "Phone", "Email"
-            }
-        ));
-        jScrollPane1.setViewportView(tblKons);
+        jLabel1.setText("Data Supplier");
 
         batal.setText("Batal");
         batal.addActionListener(new java.awt.event.ActionListener() {
@@ -153,38 +180,12 @@ public class FormMasterKonsumen extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Kode Supplier");
+
         keluar.setText("Keluar");
         keluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 keluarActionPerformed(evt);
-            }
-        });
-
-        tambah.setText("Tambah");
-        tambah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tambahActionPerformed(evt);
-            }
-        });
-
-        simpan.setText("Simpan");
-        simpan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                simpanActionPerformed(evt);
-            }
-        });
-
-        koreksi.setText("Koreksi");
-        koreksi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                koreksiActionPerformed(evt);
-            }
-        });
-
-        hapus.setText("Hapus");
-        hapus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hapusActionPerformed(evt);
             }
         });
 
@@ -224,7 +225,7 @@ public class FormMasterKonsumen extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(131, 131, 131)
-                                        .addComponent(kota_kons))
+                                        .addComponent(kota_supp))
                                     .addComponent(jLabel1)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -233,9 +234,9 @@ public class FormMasterKonsumen extends javax.swing.JFrame {
                                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(nm_kons, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                            .addComponent(kd_kons)
-                                            .addComponent(alm_kons)))))
+                                            .addComponent(nm_supp, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                                            .addComponent(kd_supp)
+                                            .addComponent(alm_supp)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(95, 95, 95)
@@ -252,18 +253,18 @@ public class FormMasterKonsumen extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(kd_kons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(kd_supp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(nm_kons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nm_supp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(alm_kons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(alm_supp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(kota_kons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kota_supp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,38 +295,6 @@ public class FormMasterKonsumen extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void kd_posActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kd_posActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_kd_posActionPerformed
-
-    private void kd_konsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kd_konsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_kd_konsActionPerformed
-
-    private void nm_konsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nm_konsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nm_konsActionPerformed
-
-    private void alm_konsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alm_konsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_alm_konsActionPerformed
-
-    private void batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batalActionPerformed
-        aktif(false);
-        setTombol(true);
-        kd_kons.setText("");
-        nm_kons.setText("");
-        alm_kons.setText("");
-        kota_kons.setText("");
-        kd_pos.setText("");
-        phone.setText("");
-        email.setText("");
-    }//GEN-LAST:event_batalActionPerformed
-
-    private void keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_keluarActionPerformed
-
     private void tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahActionPerformed
         aktif(true);
         setTombol(false);
@@ -343,28 +312,28 @@ public class FormMasterKonsumen extends javax.swing.JFrame {
             // Pastikan Statement diinisialisasi baru sebelum digunakan
             stm = Con.createStatement();  // Membuat Statement baru
 
-            String tKode = kd_kons.getText();
-            String tNama = nm_kons.getText();
-            String tAlamat = alm_kons.getText();
-            String tKota = kota_kons.getText();
+            String tKode = kd_supp.getText();
+            String tNama = nm_supp.getText();
+            String tAlamat = alm_supp.getText();
+            String tKota = kota_supp.getText();
             String tKodepos = kd_pos.getText();
             String tPhone = phone.getText();
             String tEmail = email.getText();
 
             // Periksa apakah mode edit atau tambah
             if (edit) {  // Jika edit == true, maka update
-                String sql = "UPDATE konsumen SET " +
-                             "nm_kons = '" + tNama + "', " +
-                             "alm_kons = '" + tAlamat + "', " +
-                             "kota_kons = '" + tKota + "', " +
-                             "kd_pos = '" + tKodepos + "', " +
-                             "phone = '" + tPhone + "', " +
-                             "email = '" + tEmail + "' " +
-                             "WHERE kd_kons = '" + tKode + "'";
+                String sql = "UPDATE supplier SET " +
+                "nm_supp = '" + tNama + "', " +
+                "alm_supp = '" + tAlamat + "', " +
+                "kota_supp = '" + tKota + "', " +
+                "kd_pos = '" + tKodepos + "', " +
+                "phone = '" + tPhone + "', " +
+                "email = '" + tEmail + "' " +
+                "WHERE kd_supp = '" + tKode + "'";
                 stm.executeUpdate(sql);
             } else {  // Jika edit == false, maka insert
-                String sql = "INSERT INTO konsumen (kd_kons, nm_kons, alm_kons, kota_kons, kd_pos, phone, email) " +
-                             "VALUES ('" + tKode + "', '" + tNama + "', '" + tAlamat + "', '" + tKota + "', '" + tKodepos + "', '" + tPhone + "', '" + tEmail + "')";
+                String sql = "INSERT INTO supplier (kd_supp, nm_supp, alm_supp, kota_supp, kd_pos, phone, email) " +
+                "VALUES ('" + tKode + "', '" + tNama + "', '" + tAlamat + "', '" + tKota + "', '" + tKodepos + "', '" + tPhone + "', '" + tEmail + "')";
                 stm.executeUpdate(sql);
             }
 
@@ -395,18 +364,22 @@ public class FormMasterKonsumen extends javax.swing.JFrame {
         edit = true;
         aktif(true);
         setTombol(false);
-        kd_kons.setEditable(false);
+        kd_supp.setEditable(false);
 
         // Mengambil data dari baris yang dipilih di tabel dan memasukkan ke form
-        int row = tblKons.getSelectedRow();  // Ambil data dari baris yang dipilih
-        kd_kons.setText(tblKons.getValueAt(row, 0).toString());
-        nm_kons.setText(tblKons.getValueAt(row, 1).toString());
-        alm_kons.setText(tblKons.getValueAt(row, 2).toString());
-        kota_kons.setText(tblKons.getValueAt(row, 3).toString());
-        kd_pos.setText(tblKons.getValueAt(row, 4).toString());
-        phone.setText(tblKons.getValueAt(row, 5).toString());
-        email.setText(tblKons.getValueAt(row, 6).toString());
+        int row = tblSupp.getSelectedRow();  // Ambil data dari baris yang dipilih
+        kd_supp.setText(tblSupp.getValueAt(row, 0).toString());
+        nm_supp.setText(tblSupp.getValueAt(row, 1).toString());
+        alm_supp.setText(tblSupp.getValueAt(row, 2).toString());
+        kota_supp.setText(tblSupp.getValueAt(row, 3).toString());
+        kd_pos.setText(tblSupp.getValueAt(row, 4).toString());
+        phone.setText(tblSupp.getValueAt(row, 5).toString());
+        email.setText(tblSupp.getValueAt(row, 6).toString());
     }//GEN-LAST:event_koreksiActionPerformed
+
+    private void kd_suppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kd_suppActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kd_suppActionPerformed
 
     private void hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusActionPerformed
         try {
@@ -419,22 +392,22 @@ public class FormMasterKonsumen extends javax.swing.JFrame {
             stm = Con.createStatement();
 
             // Mengecek jika kode barang tidak kosong
-            if (kd_kons.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Kode Konsumen tidak boleh kosong!", "Peringatan", JOptionPane.WARNING_MESSAGE);
+            if (kd_supp.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Kode Supplier tidak boleh kosong!", "Peringatan", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
             // SQL query untuk hapus data
-            String sql = "DELETE FROM konsumen WHERE kd_kons='" + kd_kons.getText() + "'";
+            String sql = "DELETE FROM supplier WHERE kd_supp='" + kd_supp.getText() + "'";
             int affectedRows = stm.executeUpdate(sql);
 
             // Memeriksa apakah baris berhasil dihapus
             if (affectedRows > 0) {
                 // Jika berhasil menghapus, tampilkan pesan sukses
-                JOptionPane.showMessageDialog(null, "Data Konsumen berhasil dihapus!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Data Supplier berhasil dihapus!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 // Jika tidak ada baris yang dihapus (misalnya, data tidak ditemukan)
-                JOptionPane.showMessageDialog(null, "Data Konsumen tidak ditemukan!", "Gagal", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Data Supplier tidak ditemukan!", "Gagal", JOptionPane.ERROR_MESSAGE);
             }
 
             // Memanggil baca_data untuk memperbarui tampilan setelah data dihapus
@@ -456,9 +429,37 @@ public class FormMasterKonsumen extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_hapusActionPerformed
 
+    private void nm_suppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nm_suppActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nm_suppActionPerformed
+
+    private void alm_suppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alm_suppActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_alm_suppActionPerformed
+
     private void phoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_phoneActionPerformed
+
+    private void kd_posActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kd_posActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kd_posActionPerformed
+
+    private void batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batalActionPerformed
+        aktif(false);
+        setTombol(true);
+        kd_supp.setText("");
+        nm_supp.setText("");
+        alm_supp.setText("");
+        kota_supp.setText("");
+        kd_pos.setText("");
+        phone.setText("");
+        email.setText("");
+    }//GEN-LAST:event_batalActionPerformed
+
+    private void keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_keluarActionPerformed
 
     // Method untuk membuka koneksi database
     private void open_db() { 
@@ -475,42 +476,42 @@ public class FormMasterKonsumen extends javax.swing.JFrame {
     private void baca_data() { 
     // Mulai dengan try-catch untuk menangani SQLException
     Statement stm = null;
-    ResultSet RsKons = null;
+    ResultSet RsSupp = null;
 
     try { 
         // Membuat statement dengan ResultSet yang dapat digulir (scrollable)
         stm = Con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY); // Menggunakan scrollable ResultSet
-        RsKons = stm.executeQuery("SELECT * FROM konsumen");  // Menjalankan query
+        RsSupp = stm.executeQuery("SELECT * FROM supplier");  // Menjalankan query
 
         // Mengambil metadata dari ResultSet
-        ResultSetMetaData meta = RsKons.getMetaData(); 
+        ResultSetMetaData meta = RsSupp.getMetaData(); 
         int col = meta.getColumnCount(); 
         int baris = 0;
         
         // Hitung jumlah baris dari ResultSet
-        while (RsKons.next()) { 
-            baris = RsKons.getRow(); 
+        while (RsSupp.next()) { 
+            baris = RsSupp.getRow(); 
         }
 
         // Menyiapkan array untuk menampung data
         dataTable = new Object[baris][col]; 
         int x = 0; 
-        RsKons.beforeFirst();  // Set kembali posisi pointer ResultSet
+        RsSupp.beforeFirst();  // Set kembali posisi pointer ResultSet
         
         // Memasukkan data ke dalam array dataTable
-        while (RsKons.next()) { 
-            dataTable[x][0] = RsKons.getString("kd_kons"); 
-            dataTable[x][1] = RsKons.getString("nm_kons"); 
-            dataTable[x][2] = RsKons.getString("alm_kons");
-            dataTable[x][3] = RsKons.getString("kota_kons");
-            dataTable[x][4] = RsKons.getString("kd_pos"); 
-            dataTable[x][5] = RsKons.getString("phone");
-            dataTable[x][6] = RsKons.getString("email"); 
+        while (RsSupp.next()) { 
+            dataTable[x][0] = RsSupp.getString("kd_supp"); 
+            dataTable[x][1] = RsSupp.getString("nm_supp"); 
+            dataTable[x][2] = RsSupp.getString("alm_supp");
+            dataTable[x][3] = RsSupp.getString("kota_supp");
+            dataTable[x][4] = RsSupp.getString("kd_pos"); 
+            dataTable[x][5] = RsSupp.getString("phone");
+            dataTable[x][6] = RsSupp.getString("email"); 
             x++; 
         }
 
         // Menampilkan data ke dalam JTable
-        tblKons.setModel(new DefaultTableModel(dataTable, header));
+        tblSupp.setModel(new DefaultTableModel(dataTable, header));
 
         } catch (SQLException e) { 
             // Menangani SQLException dengan menampilkan pesan error
@@ -518,8 +519,8 @@ public class FormMasterKonsumen extends javax.swing.JFrame {
         } finally {
             // Pastikan untuk hanya menutup ResultSet dan Statement setelah semua selesai digunakan.
             try {
-                if (RsKons != null && !RsKons.isClosed()) {
-                    RsKons.close();  // Hanya tutup ResultSet jika sudah tidak digunakan
+                if (RsSupp != null && !RsSupp.isClosed()) {
+                    RsSupp.close();  // Hanya tutup ResultSet jika sudah tidak digunakan
                 }
                 if (stm != null && !stm.isClosed()) {
                     stm.close();  // Hanya tutup Statement jika sudah tidak digunakan
@@ -532,10 +533,10 @@ public class FormMasterKonsumen extends javax.swing.JFrame {
     
     // Method untuk mengosongkan input form
     private void kosong() { 
-        kd_kons.setText(""); 
-        nm_kons.setText(""); 
-        alm_kons.setText("");
-        kota_kons.setText("");
+        kd_supp.setText(""); 
+        nm_supp.setText(""); 
+        alm_supp.setText("");
+        kota_supp.setText("");
         kd_pos.setText(""); 
         phone.setText(""); 
         email.setText(""); 
@@ -543,10 +544,10 @@ public class FormMasterKonsumen extends javax.swing.JFrame {
     
     // Method untuk mengaktifkan/menonaktifkan input field
     private void aktif(boolean x) { 
-        kd_kons.setEditable(x); 
-        nm_kons.setEditable(x);
-        alm_kons.setEditable(x);
-        kota_kons.setEditable(x);
+        kd_supp.setEditable(x); 
+        nm_supp.setEditable(x);
+        alm_supp.setEditable(x);
+        kota_supp.setEditable(x);
         kd_pos.setEditable(x);
         phone.setEditable(x); 
         email.setEditable(x); 
@@ -579,26 +580,26 @@ public class FormMasterKonsumen extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormMasterKonsumen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormMasterSupplier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormMasterKonsumen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormMasterSupplier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormMasterKonsumen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormMasterSupplier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormMasterKonsumen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormMasterSupplier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormMasterKonsumen().setVisible(true);
+                new FormMasterSupplier().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField alm_kons;
+    private javax.swing.JTextField alm_supp;
     private javax.swing.JButton batal;
     private javax.swing.JTextField email;
     private javax.swing.JButton hapus;
@@ -612,16 +613,15 @@ public class FormMasterKonsumen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField kd_kons;
     private javax.swing.JTextField kd_pos;
+    private javax.swing.JTextField kd_supp;
     private javax.swing.JButton keluar;
     private javax.swing.JButton koreksi;
-    private javax.swing.JTextField kota_kons;
-    private javax.swing.JTextField nm_kons;
+    private javax.swing.JTextField kota_supp;
+    private javax.swing.JTextField nm_supp;
     private javax.swing.JTextField phone;
     private javax.swing.JButton simpan;
     private javax.swing.JButton tambah;
-    private javax.swing.JTable tblKons;
+    private javax.swing.JTable tblSupp;
     // End of variables declaration//GEN-END:variables
-
 }

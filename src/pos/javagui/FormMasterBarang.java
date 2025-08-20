@@ -453,6 +453,13 @@ public class FormMasterBarang extends javax.swing.JFrame {
     private void batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batalActionPerformed
         aktif(false);
         setTombol(true);
+        kd_brg.setText("");
+        nm_brg.setText("");
+        satuan.setSelectedIndex(-1);
+        harga_jual.setText("");
+        harga_beli.setText("");
+        stok.setText("");
+        stok_min.setText("");
     }//GEN-LAST:event_batalActionPerformed
     
     // Method untuk membuka koneksi database
