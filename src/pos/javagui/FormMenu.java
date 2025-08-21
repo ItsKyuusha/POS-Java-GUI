@@ -104,6 +104,11 @@ public class FormMenu extends javax.swing.JFrame {
         jMenu2.add(formpenjualan);
 
         jMenuItem2.setText("Pembelian");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuBar1.add(jMenu2);
@@ -159,7 +164,8 @@ public class FormMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_menuKonsumenActionPerformed
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
-        System.exit(0);
+        new Login().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_logoutActionPerformed
 
     private void menuUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuUserActionPerformed
@@ -173,6 +179,10 @@ public class FormMenu extends javax.swing.JFrame {
     private void formpenjualanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formpenjualanActionPerformed
         new FormTransaksiPenjualan().setVisible(true);
     }//GEN-LAST:event_formpenjualanActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        new FormTransaksiPembelian().setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
