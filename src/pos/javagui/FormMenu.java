@@ -36,7 +36,7 @@ public class FormMenu extends javax.swing.JFrame {
         logout = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         formpenjualan = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        formpembelian = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -45,6 +45,7 @@ public class FormMenu extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        backupdb = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,13 +104,13 @@ public class FormMenu extends javax.swing.JFrame {
         });
         jMenu2.add(formpenjualan);
 
-        jMenuItem2.setText("Pembelian");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        formpembelian.setText("Pembelian");
+        formpembelian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                formpembelianActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem2);
+        jMenu2.add(formpembelian);
 
         jMenuBar1.add(jMenu2);
 
@@ -136,6 +137,15 @@ public class FormMenu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Utility");
+
+        backupdb.setText("Backup Database");
+        backupdb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backupdbActionPerformed(evt);
+            }
+        });
+        jMenu4.add(backupdb);
+
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -180,9 +190,13 @@ public class FormMenu extends javax.swing.JFrame {
         new FormTransaksiPenjualan().setVisible(true);
     }//GEN-LAST:event_formpenjualanActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void formpembelianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formpembelianActionPerformed
         new FormTransaksiPembelian().setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_formpembelianActionPerformed
+
+    private void backupdbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backupdbActionPerformed
+        new BackupDatabase().setVisible(true);
+    }//GEN-LAST:event_backupdbActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,13 +234,14 @@ public class FormMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem backupdb;
+    private javax.swing.JMenuItem formpembelian;
     private javax.swing.JMenuItem formpenjualan;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
