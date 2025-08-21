@@ -435,6 +435,28 @@ public class FormTransaksiPenjualan extends javax.swing.JFrame {
         kosong_detail();
         aktif(false);
         setTombol(true);
+
+        // kosongkan combobox
+        kd_kons.removeAllItems();
+        kd_brg.removeAllItems();
+
+        // kosongkan tabel
+        tableModel.setRowCount(0);
+
+        // reset JTextArea print
+        print.setText("");
+
+        // reset total, bayar, kembalian
+        totjualdetail.setText("");
+        bayardetail.setText("");
+        kembalian.setText("");
+
+        // readonly fields tetap readonly
+        totjualdetail.setEditable(false);
+        kembalian.setEditable(false);
+
+        // fokus ke field awal (opsional)
+        kd_kons.requestFocus();
     }//GEN-LAST:event_simpanActionPerformed
 
     private void cetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cetakActionPerformed
