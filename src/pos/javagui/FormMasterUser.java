@@ -248,7 +248,7 @@ public class FormMasterUser extends javax.swing.JFrame {
                     .addComponent(hapus)
                     .addComponent(batal)
                     .addComponent(keluar))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(9, 9, 9)
@@ -259,7 +259,7 @@ public class FormMasterUser extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
                         .addComponent(user_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(429, Short.MAX_VALUE)))
+                    .addContainerGap(359, Short.MAX_VALUE)))
         );
 
         pack();
